@@ -3,12 +3,16 @@ const props = defineProps<{
   icon: string
   name: string
   number: number
+  crappedTheBed: boolean
 }>()
 </script>
 
 <template>
   <div class="header">
-    <img :src="props.icon" /> {{ props.name }} #{{ props.number }}
+    <img :src="props.icon" /> {{ props.name }}
+    <span v-if="!crappedTheBed">#</span>
+    <span v-else class="text-red-darken-3">#</span>
+    {{ props.number }}
   </div>
 </template>
 

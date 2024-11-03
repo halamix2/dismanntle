@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 import type { Ref } from 'vue'
 import { defineStore } from 'pinia'
 import { BadgeIDs } from '@/badge/types'
@@ -16,7 +16,7 @@ function createEmptyBadge(): Badge {
 
 export const useBadgesStore = defineStore('badges', () => {
   // I'm too dum to get Map to be reative
-  // let badges = ref(new Map<string, Badge>())
+  let badges: Map<string, Badge> = reactive(new Map<string, Badge>())
   const badgeItermediate1: Ref<Badge> = ref(createEmptyBadge())
   const badgeAdvanced1: Ref<Badge> = ref(createEmptyBadge())
   const badgeAdvanced2: Ref<Badge> = ref(createEmptyBadge())
@@ -30,26 +30,33 @@ export const useBadgesStore = defineStore('badges', () => {
     }
 
     badgeItems.forEach(item => {
+      let tmp = convertItem(item)
       switch (item.defindex) {
         case BadgeIDs.tour_intermediate1:
-          badgeItermediate1.value = convertItem(item)
+          badgeItermediate1.value = tmp
+          badges.set('badgeItermediate1', tmp)
           break
         case BadgeIDs.tour_advanced1:
-          badgeAdvanced1.value = convertItem(item)
+          badgeAdvanced1.value = tmp
+          badges.set('badgeItermediate1', tmp)
           break
         case BadgeIDs.tour_advanced2:
-          badgeAdvanced2.value = convertItem(item)
+          badgeAdvanced2.value = tmp
+          badges.set('badgeItermediate1', tmp)
           break
         case BadgeIDs.tour_advanced3:
-          badgeAdvanced3.value = convertItem(item)
+          badgeAdvanced3.value = tmp
+          badges.set('badgeAdvanced3', tmp)
           break
         case BadgeIDs.tour_expert1:
-          badgeExpert1.value = convertItem(item)
+          badgeExpert1.value = tmp
+          badges.set('badgeExpert1', tmp)
           break
       }
     })
   }
   return {
+    badges,
     badgeItermediate1,
     badgeAdvanced1,
     badgeAdvanced2,

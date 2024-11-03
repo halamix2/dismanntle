@@ -5,6 +5,7 @@ const props = defineProps<{
   thumbnail: string
   name: string
   missions: string[]
+  badgeName: string
 }>()
 
 function backgroundStyle(thumbnail: string) {
@@ -24,7 +25,7 @@ function backgroundStyle(thumbnail: string) {
       <div>{{ props.name }}</div>
       <div class="missions">
         <div v-for="mission in props.missions" :key="mission">
-          <MissionItem :mission="mission" />
+          <MissionItem :badgeName="props.badgeName" :mission="mission" />
         </div>
       </div>
     </div>

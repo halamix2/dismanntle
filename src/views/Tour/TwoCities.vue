@@ -23,16 +23,22 @@ let steamID = ''
 let updateInterval = 0
 let locked = false
 const tourHeaderTitle = ref('Two Cities')
+const badgeName = 'badgeAdvanced3'
+const crappedTheBed = ref(false)
 
 async function updateLogic() {
   if (!locked) {
     locked = true
+    let crapped = false
     try {
       await steamStore.updateCurrentMission(key, steamID)
       await badgesStore.updateBadges(key, steamID)
     } catch (e) {
-      console.log('ignoring Steam API error for now...', e)
+      console.log('ignoring Steam API error for now...') //, e)
+      crapped = true
     }
+    crappedTheBed.value = crapped
+    console.log('crap', crappedTheBed.value)
     await updateTourURL(router, steamStore.currentMission)
     if (badgesStore.badgeAdvanced3.customName) {
       tourHeaderTitle.value = badgesStore.badgeAdvanced3.customName
@@ -80,15 +86,18 @@ onBeforeUnmount(() => {
     :icon="icon"
     :name="tourHeaderTitle"
     :number="badgesStore.badgeAdvanced3.completedTours"
+    :crappedTheBed="crappedTheBed"
   />
   <MapItem
     :thumbnail="thumbnailMannhattan"
     :name="'Mannhattan'"
-    :missions="[]"
+    :missions="['mvm_mannhattan_advanced1', 'mvm_mannhattan_advanced2']"
+    :badgeName="badgeName"
   />
   <MapItem
     :thumbnail="thumbnailRottenburg"
     :name="'Rottenburg'"
-    :missions="[]"
+    :missions="['mvm_rottenburg_advanced1', 'mvm_rottenburg_advanced2']"
+    :badgeName="badgeName"
   />
 </template>
