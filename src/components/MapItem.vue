@@ -18,15 +18,20 @@ function backgroundStyle(thumbnail: string) {
 </script>
 
 <template>
-  <div class="Map">
+  <div class="d-flex flex-row align-stretch flex-fill">
     <div class="thumbnail" :style="backgroundStyle(props.thumbnail)" />
     <!-- <img :src="props.thumbnail" /> -->
-    <div>
-      <div>{{ props.name }}</div>
-      <div class="missions">
-        <div v-for="mission in props.missions" :key="mission">
-          <MissionItem :badgeName="props.badgeName" :mission="mission" />
-        </div>
+    <div class="missions">
+      <div class="header bg-grey-lighten-1 text-center font-weight-medium">
+        {{ props.name }}
+      </div>
+      <div class="missions-height d-flex flex-column">
+        <MissionItem
+          v-for="mission in props.missions"
+          :key="mission"
+          :badgeName="props.badgeName"
+          :mission="mission"
+        />
       </div>
     </div>
   </div>
@@ -34,7 +39,16 @@ function backgroundStyle(thumbnail: string) {
 
 <style scoped>
 .thumbnail {
-  width: 100px;
-  height: 200px;
+  width: 20%;
+}
+.missions {
+  width: 80%;
+}
+.header {
+  height: 20%;
+  font-size: 6vh;
+}
+.missions-height {
+  height: 80%;
 }
 </style>

@@ -13,22 +13,22 @@ const router = createRouter({
     {
       path: '/oil-spill',
       name: 'Oil Spill',
-      component: () => import('../views/Tour/TwoCities.vue'),
+      component: () => import('../views/Tour/OilSpill.vue'),
     },
     {
       path: '/steel-trap',
       name: 'Steel Trap',
-      component: () => import('../views/Tour/TwoCities.vue'),
+      component: () => import('../views/Tour/SteelTrap.vue'),
     },
     {
       path: '/mecha-engine',
       name: 'Mecha Engine',
-      component: () => import('../views/Tour/TwoCities.vue'),
+      component: () => import('../views/Tour/MechaEngine.vue'),
     },
     {
       path: '/gear-grinder',
       name: 'Gear Grinder',
-      component: () => import('../views/Tour/TwoCities.vue'),
+      component: () => import('../views/Tour/GearGrinder.vue'),
     },
     {
       path: '/two-cities',

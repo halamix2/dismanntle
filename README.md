@@ -36,7 +36,7 @@ Website uses these ID internally to identify medals/maps
 
 - tour_intermediate1 - Oil Spill (870)
   - map - Name (bit in bitfield)
-  - mvm_coaltown_intermediate - Cave-in (1)
+  - mvm_coaltown_intermediate - Mecha Engine (1)
   - mvm_coaltown_intermediate2 - Quarry (2)
   - mvm_decoy_intermediate - Doe's Doom (3)
   - mvm_decoy_intermediate2 - Day of Wreckening (4)

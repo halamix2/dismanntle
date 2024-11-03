@@ -15,8 +15,6 @@ enum Status {
   Done = 2,
 }
 
-const StatusClass = ['notstarted', 'inprogress', 'done']
-
 const steamStore = useSteamStore()
 const badgesStore = useBadgesStore()
 
@@ -58,10 +56,48 @@ function updateStatus() {
 }
 
 watch(badgesStore.badges, updateStatus)
+
+function getStatusClasses() {
+  switch (status.value) {
+    case Status.NotStarted:
+      return ['bg-grey-darken-1', 'text-opacity-20']
+    case Status.InProgress:
+      return ['bg-green-lighten-1']
+    case Status.Done:
+      return ['bg-grey-darken-2']
+  }
+}
+function getTextStatusClasses() {
+  switch (status.value) {
+    case Status.NotStarted:
+      return []
+    case Status.InProgress:
+      return ['status-in-progress']
+    case Status.Done:
+      return ['opacity-50']
+  }
+}
 // watch(steamStore.currentMission, updateStatus)
 </script>
 <template>
-  {{ status }}
-  <span v-if="status === Status.Done" class="text-grey-darken-1">✔</span>
-  {{ missionName }}
+  <div class="h-100 d-flex flex-row text-size" :class="getStatusClasses()">
+    <span v-if="status === Status.Done" class="text-grey-darken-4 my-auto mx-2"
+      >✔</span
+    >
+    <span v-else class="opacity-0 my-auto mx-2">✘</span>
+    <span class="my-auto" :class="getTextStatusClasses()">
+      {{ missionName }}</span
+    >
+  </div>
 </template>
+
+<style scoped>
+.text-size {
+  font-size: 6vh;
+}
+/* .status-not-started {} */
+.status-in-progress {
+  text-shadow: 0.5vh 0.5vh 3vh #000000;
+}
+/* .status-done {} */
+</style>

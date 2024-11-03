@@ -11,11 +11,12 @@ import TourHeader from '@/components/TourHeader.vue'
 import MapItem from '@/components/MapItem.vue'
 
 import icon from '@/assets/badges/two_cities.png'
-import thumbnailMannhattan from '@/assets/maps/mannhattan.png'
-import thumbnailRottenburg from '@/assets/maps/rottenburg.png'
+import thumbnailCoaltown from '@/assets/maps/coaltown.png'
+import thumbnailDecoy from '@/assets/maps/decoy.png'
+import thumbnailMannworks from '@/assets/maps/mannworks.png'
 
-const defaultTitle = 'Two Cities'
-const badgeName = 'badgeAdvanced3'
+const defaultTitle = 'Gear Grinder'
+const badgeName = 'badgeExpert1'
 
 const router = useRouter()
 const route = useRoute()
@@ -82,15 +83,21 @@ onBeforeUnmount(() => {
   />
   <div class="d-flex flex-column" :style="{ height: '84%' }">
     <MapItem
-      :thumbnail="thumbnailMannhattan"
-      :name="'Mannhattan'"
-      :missions="['mvm_mannhattan_advanced1', 'mvm_mannhattan_advanced2']"
+      :thumbnail="thumbnailCoaltown"
+      :name="'Coaltown'"
+      :missions="['mvm_coaltown_expert1']"
       :badgeName="badgeName"
     />
     <MapItem
-      :thumbnail="thumbnailRottenburg"
-      :name="'Rottenburg'"
-      :missions="['mvm_rottenburg_advanced1', 'mvm_rottenburg_advanced2']"
+      :thumbnail="thumbnailDecoy"
+      :name="'Decoy'"
+      :missions="['mvm_decoy_expert1']"
+      :badgeName="badgeName"
+    />
+    <MapItem
+      :thumbnail="thumbnailMannworks"
+      :name="'Mannworks'"
+      :missions="['mvm_mannworks_expert1']"
       :badgeName="badgeName"
     />
   </div>
